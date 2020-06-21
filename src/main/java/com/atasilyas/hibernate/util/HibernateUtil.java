@@ -24,7 +24,9 @@ public class HibernateUtil {
         if (ObjectUtils.isEmpty(sessionFactory)) {
             try {
 
-                standardServiceRegistry = new StandardServiceRegistryBuilder().configure().build();
+                standardServiceRegistry = new StandardServiceRegistryBuilder()
+                        .configure()  /*Burada configure aslında bir file path bekler fakat biz cfg dosyasını verdigimiz için o ismi hibernate resource klasorunun altından otomatk alır */
+                        .build();
                 MetadataSources metadataSources = new MetadataSources(standardServiceRegistry);
                 Metadata metadata = metadataSources.getMetadataBuilder().build();
                 sessionFactory = metadata.getSessionFactoryBuilder().build();
