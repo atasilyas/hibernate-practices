@@ -17,5 +17,6 @@
         <mapping class="com.atasilyas.hibernate.onetoone.Role"></mapping>
         <mapping class="com.atasilyas.hibernate.onetomany.Address"></mapping>
         <mapping class="com.atasilyas.hibernate.manytoone.IdentityCard"></mapping>
+        <mapping class="com.atasilyas.hibernate.manytomany.Product"></mapping>
     </session-factory>
 </hibernate-configuration>

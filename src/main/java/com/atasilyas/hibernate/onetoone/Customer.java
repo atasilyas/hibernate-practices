@@ -1,5 +1,6 @@
 package com.atasilyas.hibernate.onetoone;
 
+import com.atasilyas.hibernate.manytomany.Product;
 import com.atasilyas.hibernate.manytoone.IdentityCard;
 import com.atasilyas.hibernate.onetomany.Address;
 import lombok.AllArgsConstructor;
@@ -38,5 +39,8 @@ public class Customer
     private List<Address> addresses =  new ArrayList<Address>();
 
     @OneToMany(mappedBy ="customer",cascade = CascadeType.ALL)//casdcade kullan eger customer üzerinde bir transient ıdentity card varsa yani save edilmek istenen bir card varsa all olmalı.
-    private List<IdentityCard> identityCard;
+    private List<IdentityCard> identityCard =  new ArrayList<IdentityCard>();
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "customer")//mapped by sayesinde 1 tablo eksilir toplam 3 olur artık product içerisindeki customer tablo yaratmamktan sorumlu.
+    private List<Product> products = new ArrayList<Product>();
 }
