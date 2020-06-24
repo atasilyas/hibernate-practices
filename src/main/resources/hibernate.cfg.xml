@@ -11,6 +11,8 @@
         <property name="hibernate.hbm2ddl.auto">create-drop</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
-        <mapping class="com.atasilyas.hibernate.crudoperations.User"></mapping>
+
+        <mapping class="com.atasilyas.hibernate.entity.User"></mapping>
+        <mapping class="com.atasilyas.hibernate.onetoone.IdentityCard"></mapping>
     </session-factory>
 </hibernate-configuration>

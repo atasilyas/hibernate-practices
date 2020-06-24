@@ -1,4 +1,4 @@
-package com.atasilyas.hibernate.crudoperations;
+package com.atasilyas.hibernate.enbeddedobject;
 
 import com.atasilyas.hibernate.entity.User;
 import com.atasilyas.hibernate.util.HibernateUtil;
@@ -7,7 +7,7 @@ import org.hibernate.Session;
 
 import java.util.Date;
 
-public class SavePersistTest
+public class Test
 {
 
     public static void main(String[] args)
@@ -19,14 +19,7 @@ public class SavePersistTest
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
 
-
-            Integer userId = (Integer) session.save(getUser1()); /*save edilen user id'si doner*/
-            session.persist(getUser2());/*void doner*/
-            session.saveOrUpdate(getUser3());/*varsa update yoksa persist*/
-            getUserById(session);/*select atmak için id li user nedir*/
-            updateUserById(session); /*custom update*/
-            deleteUserById(session);
-
+            session.save(getUser1());
 
             session.getTransaction().commit();
         }
@@ -94,10 +87,15 @@ public class SavePersistTest
     static User getUser1()
     {
         User user = new User();
+        Address address = new Address();
+        address.setCity("van");
+        address.setPinCode(232L);
+        address.setStreet("karahan");
         user.setCreateDate(new Date());
         user.setUserName("ilyas");
         user.setEmail("ilyas.atas1@gmail.com");
         user.setSalary(1234.34);
+        user.setHomeAddress(address);
         return user;
     }
 
