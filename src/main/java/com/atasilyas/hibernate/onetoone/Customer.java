@@ -1,12 +1,15 @@
 package com.atasilyas.hibernate.onetoone;
 
+import com.atasilyas.hibernate.manytoone.IdentityCard;
+import com.atasilyas.hibernate.onetomany.Address;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -28,4 +31,12 @@ public class Customer
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id")
     private Role role;
+
+
+    @OneToMany(cascade = CascadeType.ALL)// eger bunu koymazsak ve customer içerisine address setlersek object references an unsaved transient instance - save the transient instance before flushing
+    @JoinTable( name = "customer_Address" ,joinColumns = @JoinColumn(name = "customer_id"), inverseJoinColumns = @JoinColumn(name = "address_id"))
+    private List<Address> addresses =  new ArrayList<Address>();
+
+    @OneToMany(mappedBy ="customer",cascade = CascadeType.ALL)//casdcade kullan eger customer üzerinde bir transient ıdentity card varsa yani save edilmek istenen bir card varsa all olmalı.
+    private List<IdentityCard> identityCard;
 }
