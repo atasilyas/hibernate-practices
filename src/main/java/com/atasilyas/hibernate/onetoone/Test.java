@@ -8,16 +8,13 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.hibernate.Session;
 
 
-public class Test
-{
+public class Test {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
 
         Customer customer = null;
         Session session = null;
-        try
-        {
+        try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
 
@@ -32,15 +29,10 @@ public class Test
 
             session.get(User.class, 1);
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally
-        {
-            if (ObjectUtils.isNotEmpty(session))
-            {
+        } finally {
+            if (ObjectUtils.isNotEmpty(session)) {
                 session.close();
             }
         }
@@ -48,12 +40,7 @@ public class Test
     }
 
 
-
-
-
-
-    static Customer getCustomer()
-    {
+    static Customer getCustomer() {
         Customer customer = new Customer();
         customer.setCustomerNo("1212121");
         Role role = Role.builder().roleName("ROLE_USER").build();
