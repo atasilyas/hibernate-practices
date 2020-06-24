@@ -41,7 +41,7 @@ public class User
 
             @AttributeOverride(column = @Column(name = "home_street", length = 50), name = "street"),
             @AttributeOverride(column = @Column(name = "home_city", length = 50), name = "city"),
-            @AttributeOverride(column = @Column(name = "home_pin__code", length = 5), name = "pincode")
+            @AttributeOverride(column = @Column(name = "home_pin_code", length = 5), name = "pinCode")
     })
     private Address homeAddress;
 
