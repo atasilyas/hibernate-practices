@@ -13,6 +13,9 @@
         <property name="hibernate.format_sql">true</property>
 
         <mapping class="com.atasilyas.hibernate.entity.User"></mapping>
-        <mapping class="com.atasilyas.hibernate.onetoone.IdentityCard"></mapping>
+        <mapping class="com.atasilyas.hibernate.onetoone.Customer"></mapping>
+        <mapping class="com.atasilyas.hibernate.onetoone.Role"></mapping>
+        <mapping class="com.atasilyas.hibernate.onetomany.Address"></mapping>
+        <mapping class="com.atasilyas.hibernate.manytoone.IdentityCard"></mapping>
     </session-factory>
 </hibernate-configuration>
