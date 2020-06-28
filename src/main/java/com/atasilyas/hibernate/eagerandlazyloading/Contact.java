@@ -1,9 +1,12 @@
 package com.atasilyas.hibernate.eagerandlazyloading;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
+@Data
 public class Contact
 {
 
